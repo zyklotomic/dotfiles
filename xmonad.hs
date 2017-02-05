@@ -11,8 +11,8 @@ main = do
 xmproc <- spawnPipe "xmobar"	
 xmonad $ defaultConfig
         { manageHook = manageDocks <+> manageHook defaultConfig
-     	, layoutHook = avoidStruts $  spacing 8 $ 
-	smartBorders $  gaps [(R,16),(L,16),(U,5),(D,5)] $ 
+     	, layoutHook = avoidStruts $  spacing 2 $ 
+	smartBorders $  gaps [(R,10),(L,10),(U,4),(D,4)] $ 
 	layoutHook defaultConfig 
      
 	, logHook = dynamicLogWithPP xmobarPP 
@@ -21,8 +21,7 @@ xmonad $ defaultConfig
                        -- , ppLayout = const "" disables Layout Info
 			}	
 
-	, terminal	= "xfce4-terminal"
-	, borderWidth	= 5
-	, focusedBorderColor = "#FFA400"
+	, terminal	= "termite"
+	, borderWidth	= 4
+	, focusedBorderColor = "#D79921"
 	}
-
