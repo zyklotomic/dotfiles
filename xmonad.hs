@@ -7,21 +7,30 @@ import XMonad.Util.Run(spawnPipe)
 import XMonad.Layout.Spacing
 import XMonad.Layout.NoBorders
 
-main = do
-xmproc <- spawnPipe "xmobar"	
-xmonad $ defaultConfig
-        { manageHook = manageDocks <+> manageHook defaultConfig
-     	, layoutHook = avoidStruts $  spacing 2 $ 
-	smartBorders $  gaps [(R,10),(L,10),(U,4),(D,4)] $ 
-	layoutHook defaultConfig 
-     
-	, logHook = dynamicLogWithPP xmobarPP 
-                        { ppOutput = hPutStrLn xmproc
-                        , ppTitle = xmobarColor "#657b83" "" . shorten 100
-                       -- , ppLayout = const "" disables Layout Info
-			}	
+main = xmonad =<< xmobar ethansConfig
 
-	, terminal	= "termite"
-	, borderWidth	= 4
-	, focusedBorderColor = "#D79921"
+-- Whether focus follows the mouse pointer.
+myFocusFollowsMouse :: Bool
+myFocusFollowsMouse = True
+
+-- myWorkspaces = ["一","二","三","四","五","六","七","八","九","十"] 
+myBorderWidth = 3
+myFocusedBorderColor = "#ffa300"
+myTerminal = "urxvtc"
+
+-- xmobar stuff
+myBar = "xmobar"
+
+-- layouts
+myLayout = smartBorders $ layoutHook def
+
+
+ethansConfig = def {
+		terminal			= myTerminal,
+		borderWidth			= myBorderWidth, 
+-- 		workspaces			= myWorkspaces,
+		focusedBorderColor  = myFocusedBorderColor,
+		
+		-- hooks, layouts
+		layoutHook			= myLayout
 	}
