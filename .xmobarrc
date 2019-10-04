@@ -1,53 +1,21 @@
- 	Config {
-	-- Appearance
-	
-	  bgColor = "#232323" --#002b36 for solarized
-	, fgColor = "#657b83"
- 	, border = NoBorder
- 	, borderColor = "black"
- 	, hideOnStart = False
- 	, persistent = True
- 	, position = Top
- 	, lowerOnStart = True
-	, font = "xft:SF Mono-11:regular"	
-	, additionalFonts=["xft:FontAwesome:pixelsize=20"]
-	, alpha = 200
-	, overrideRedirect = False	
-	-- Template
-	
-	, template = "%StdinReader%}{ %battery%|%kbd%|%wlp3s0%|%date%"
-	
-	
-	--Commands
-	
-	, commands =
-	[
-		--Battery Indicator
-		
-	        Run Battery [
-		 "--template" , "<acstatus>",
-            "--Low"      , "10",       -- units: %
-            "--High"     , "50",       -- units: %
-            "--low"      , "darkred",
-            "--normal"   , "darkorange",
-            "--",
-            "-o", "<leftipat>  <left>%",
-            "-O", "<leftipat>  <left>%",
-            "-i", "<fn=1>\xf240</fn>",
-            "--off-icon-pattern", "<fn=1>\xf1e6</fn>",
-	    "--on-icon-pattern", "<fn=1>\xf1e6</fn>"			
-				 ] 50
-		
-		--Keyboard Layout Indicator
-		
-		, Run Kbd [ ("us(dvorak)" ,  "<fc=#FFA400>DV</fc>")
-			  , ("us"         , "<fc=#8B0000>US</fc>") ]
-		, Run Date	 "<fc=#ABABAB>%a %b %_d  %T  </fc>" "date"  10
-		, Run Network "wlp3s0"
-		["-m","30","-L","0","-M","5","-c"," ", "-a", "l","--normal","#657b83","--high","#657b83"] 10
-		, Run StdinReader	 	
-		
-	]
+Config {
+		font = "xft:SF Mono-10:regular,Noto Sans Mono CJK SC-10:regular"
+		, alpha = 200
+		, border = NoBorder
+		, hideOnStart = False
+		, position = Top
+		, bgColor = "#232300"
+		, fgColor = "#657b83"
+		, template = " %StdinReader%}{%wlp2s0%|%battery%|%date% "
+		, allDesktops = True
 
+		, commands =
+		[
+			Run Battery [ "-t", "<left>%"] 150
+			, Run StdinReader
+			, Run Network "wlp2s0" ["-t", 
+									"<fc=#00ff00>上:<tx></fc> <fc=#ff0000>下:<rx></fc>"
+									, "-S", "True"] 50
+			, Run Date "<fc=#ffa300>%a %b %d %T %Z</fc>" "date" 10
+			]
 }
-
