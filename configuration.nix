@@ -8,32 +8,30 @@
 	imports =
 		[ # Include the results of the hardware scan.
 		./hardware-configuration.nix
-		./vscode.nix
+		# ./vscode.nix
 		];
 
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
+  boot.kernelPackages = pkgs.linuxPackages_latest;
   
   networking.hostName = "demoivre"; # Define your hostname.
-  
-  
-  # networking.networkmanager.enable = true;
-  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
+  # networking.interfaces.enp3s0.ipv4.addresses = [{
+  #   address = "192.168.1.2";
+  #   prefixLength = 24;
+  # }];
+    
+  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.  
   
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
   
   # Select internationalisation properties.
-  # i18n = {
-  #   consoleFont = "Lat2-Terminus16";
-  #   consoleKeyMap = "us";
-  #   defaultLocale = "en_US.UTF-8";
-  # };
   i18n.inputMethod = {
     enabled = "fcitx";
-    fcitx.engines = with pkgs.fcitx-engines; [ mozc ];
+    fcitx.engines = with pkgs.fcitx-engines; [mozc libpinyin];
   };
   
   # Set your time zone.
@@ -41,76 +39,72 @@
   
   # List packages installed in system profile. To search, run:
   # $ nix search wget 
-  environment.systemPackages = let
-  my-python-packages = python-packages: with python-packages; [
-  	numpy virtualenvwrapper jupyter matplotlib ipython conda
-  	tensorflow
-  ];
-  in with pkgs; [
-  	(python37.withPackages my-python-packages)
+  environment.systemPackages = 
+  # let
+  # my-python3-packages = python-packages: with python-packages; [
+  # 	numpy virtualenvwrapper jupyter matplotlib
+  # 	pylint pandas scikitlearn flake8 pytest
+  #       pytorch beautifulsoup4
+  #       selenium
+  # ];
+  # in
+  with pkgs; [
+  	# (python37.withPackages my-python3-packages)
   	wget vim firefox-bin git rofi st ranger htop
-  	xmobar vscode spotify pavucontrol zip unzip
+  	xmobar spotify pavucontrol zip unzip
+        emacs
   	rxvt_unicode
-  	steam xorg.libxcb
+  	xorg.libxcb
   	haskellPackages.ghc
   	gnumake
   	texlive.combined.scheme-basic
   	alacritty
-  	zathura
-  	gcc valgrind gdb
+  	zathura qutebrowser
+  	gcc valgrind gdb dunst
+	nodejs
+	ruby jekyll
+	bundler
+        google-chrome
+        usbutils
+        rustc cargo
+        geckodriver
+        jetbrains.idea-ultimate
+        neovim rustup rustc
+        screen
   ];
   nixpkgs.config.allowUnfree = true;
   
   # Fonts
   fonts.fonts = with pkgs; [
-    noto-fonts-cjk
-    nerdfonts
+    noto-fonts-cjk font-awesome
   ];
   
-  # enable fish
-  programs.fish.enable = true;
+  # enable zsh
+  programs.zsh.enable = true;
 
   # 32-bit
-  hardware.opengl.driSupport32Bit = true;
-  hardware.pulseaudio.support32Bit = true;
+  hardware.opengl.driSupport32Bit = true; 
+  
+  # Virtualization with a "z"
+  virtualisation.docker.enable = true;
 
-  # Some programs need SUID wrappers, can be configured further or are
-  # started in user sessions.
-  # programs.mtr.enable = true;
-  # programs.gnupg.agent = { enable = true; enableSSHSupport = true; };
-
-  # List services that you want to enable:
-
-  # Enable the OpenSSH daemon.
-  # services.openssh.enable = false;
-  services.openssh = {
-    enable = true;
-    ports = [30642];
-  };
-
-  # vscode configuration
-  vscode.user = "ethan";
-  vscode.homeDir = "/home/ethan";
-  vscode.extensions = with pkgs.vscode-extensions; [
-    ms-vscode.cpptools
-  ];
-  nixpkgs.latestPackages = [
-    "vscode"
-    "vscode-extensions"
-  ];
-
-  # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
   # Or disable the firewall altogether.
-  # networking.firewall.enable = false;
+  networking.firewall.enable = true;
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
 
   # Enable sound.
   sound.enable = true;
-  hardware.pulseaudio.enable = true;
+  hardware.pulseaudio = {
+    enable = true;
+    # Full build necessary for Bluetooth
+    package = pkgs.pulseaudioFull;
+    support32Bit = true;
+  };
+
+  # Enable bluetooth.
+  hardware.bluetooth.enable = true;
 
   # Enable the X11 windowing system.
   services.xserver.enable = true;
@@ -118,7 +112,10 @@
   services.xserver.xkbVariant = "dvorak"; 
   services.xserver.xkbOptions = "caps:backspace";
   services.xserver.videoDrivers = [ "nvidia" ];
-  # services.xserver.config = "xrandr --output DVI-D-0 --left-of DP-0";
+  services.xserver.xrandrHeads = [
+    { output = "DVI-D-0"; }
+    { output = "DP-0"; primary = true; }
+  ];
 
   # Enable touchpad support.
   # services.xserver.libinput.enable = true;
@@ -132,18 +129,22 @@
       ];
   };
 
+  # Enable the urxvtd daemon, smh my head, rip in peace grammar
+  services.urxvtd.enable = true;
+
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.ethan = {
     isNormalUser = true;
     home = "/home/ethan";
     description = "Ethan Kiang";
-    extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
-    shell = pkgs.fish;
+    extraGroups = [ "wheel"  "docker"]; # Enable ‘sudo’ for the user.
+    shell = pkgs.zsh;
   };
 
   # This value determines the NixOS release with which your system is to be
   # compatible, in order to avoid breaking some software such as database
   # servers. You should change this only after NixOS release notes say you
   # should.
-  system.stateVersion = "19.03"; # Did you read the comment?  
+  system.stateVersion = "19.09"; # Did you read the comment?
+
 } 

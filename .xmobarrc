@@ -1,21 +1,25 @@
 Config {
-		font = "xft:SF Mono-10:regular,Noto Sans Mono CJK SC-10:regular"
-		, alpha = 200
+		font = "xft:SF Mono-10:bold,Noto Sans Mono CJK SC-10:bold"
+                , additionalFonts = [ "xft:Font Awesome 5 Free:style=Solid:pixelsize=12" ]
+		-- , alpha = 230
 		, border = NoBorder
 		, hideOnStart = False
 		, position = Top
-		, bgColor = "#232300"
-		, fgColor = "#657b83"
-		, template = " %StdinReader%}{%wlp2s0%|%battery%|%date% "
+		, bgColor = "#361563"
+		, fgColor = "#aac7d1"
+		, template = " %StdinReader%}{%memory% %multicpu% %enp3s0% %date% "
 		, allDesktops = True
 
 		, commands =
 		[
-			Run Battery [ "-t", "<left>%"] 150
-			, Run StdinReader
-			, Run Network "wlp2s0" ["-t", 
-									"<fc=#00ff00>上:<tx></fc> <fc=#ff0000>下:<rx></fc>"
-									, "-S", "True"] 50
-			, Run Date "<fc=#ffa300>%a %b %d %T %Z</fc>" "date" 10
-			]
+        Run StdinReader
+        , Run Network "enp3s0" ["-t", "<fc=#26f02c>上:<tx></fc> <fc=#eb2828>下:<rx></fc>"
+                  , "--minwidth", "8"
+                  , "--maxwidth", "8"
+                , "-S", "True"] 10
+      , Run Memory [ "-t", "<fn=1></fn> <usedratio>%" ] 10
+      -- always 0% anyways , Run Swap [] 10
+      , Run MultiCpu ["-t", "<fn=1></fn> <total>%" ] 10     
+      , Run Date "<fc=#ffb044><fn=1></fn> %a %b %d %T %Z</fc>" "date" 10
+		]
 }
