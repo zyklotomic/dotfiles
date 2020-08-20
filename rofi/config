@@ -1,0 +1,12 @@
+rofi.m: -4
+rofi -threads 2..4
+rofi.font: IBM Plex Mono 12
+rofi.modi: combi,run
+! rofi.matching: fuzzy
+rofi.combi-modi: window,drun
+rofi.kb-mode-next: Shift+Right
+! ,Alt+Tab
+rofi.kb-mode-previous: Shift+Left
+! ,Alt+ISO_Left_Tab
+rofi.kb-cancel: Alt+space,Escape
+rofi.theme: gruvbox-dark-soft

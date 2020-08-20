@@ -1,5 +1,5 @@
 Config {
-		font = "xft:SF Mono-10:bold,Noto Sans Mono CJK SC-10:bold"
+		font = "xft:IBM Plex Mono Medium:size=11,Noto Sans Mono CJK SC-11:bold"
                 , additionalFonts = [ "xft:FontAwesome:style=Solid:pixelsize=12" ]
 		-- , alpha = 230
 		, border = NoBorder
@@ -18,7 +18,7 @@ Config {
                   , "--maxwidth", "8"
                 , "-S", "True"] 10
       , Run Memory [ "-t", "Mem: <usedratio>%" ] 10
-      , Run Battery [ "--template", "Battery: <left>%" ] 50
+      , Run Battery [ "--template", "Batt: <left>%" ] 50
       , Run Swap [] 10
       -- always 0% anyways , Run Swap [] 10
       , Run MultiCpu ["-t", "CPU: <total>%" ] 10     
