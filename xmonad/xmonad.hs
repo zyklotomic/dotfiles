@@ -25,12 +25,12 @@ myWorkspaces = ["壹","二","三","四","五","六","七","八","九"]
 myBorderWidth = 2
 myFocusedBorderColor = "#ffa300"
 myNormalBorderColor = "#000000"
-myTerminal = "urxvtc" 
+myTerminal = "alacritty"
 -- layouts
 -- myLayout = smartBorders $ layoutHook def ||| simpleTabbed
 myLayout = smartBorders $ layoutHook def
 
--- myStartupHook = setWMName "LG3D"
+-- myStartupHook = 
 
 -- keybindings
 myModMask = mod1Mask
@@ -60,8 +60,8 @@ ethansConfig = def {
 		terminal			= myTerminal,
 		borderWidth			= myBorderWidth, 
  		workspaces			= myWorkspaces,
-		focusedBorderColor              = myFocusedBorderColor,
-		normalBorderColor               = myNormalBorderColor,
+		focusedBorderColor  = myFocusedBorderColor,
+		normalBorderColor   = myNormalBorderColor,
 		keys				= myKeys, 
 		modMask				= myModMask,
 		-- hooks, layouts
