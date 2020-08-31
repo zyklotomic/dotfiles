@@ -25,7 +25,7 @@ myWorkspaces = ["壹","二","三","四","五","六","七","八","九"]
 myBorderWidth = 2
 myFocusedBorderColor = "#ffa300"
 myNormalBorderColor = "#000000"
-myTerminal = "alacritty"
+myTerminal = "urxvtc"
 -- layouts
 -- myLayout = smartBorders $ layoutHook def ||| simpleTabbed
 myLayout = smartBorders $ layoutHook def
@@ -39,6 +39,7 @@ localKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
 	[ ((modm, xK_space), spawn "rofi -show-icons -show combi")
 	-- For legacy dmenu run, muscle memory
 	, ((modm, xK_p), spawn "rofi -show-icons -show run")
+	, ((mod4Mask, xK_w), spawn "rofi -show-icons -show window")
 	-- Cycle workspaces bindings
 	, ((mod4Mask, xK_Tab), moveTo Next NonEmptyWS)
 	, ((mod4Mask .|. shiftMask, xK_Tab), moveTo Prev NonEmptyWS)

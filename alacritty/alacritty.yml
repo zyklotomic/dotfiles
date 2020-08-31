@@ -3,10 +3,10 @@ window:
     x: 10
     y: 10
 
-background_opacity: 0.8
+background_opacity: 0.90
 
 font:
-  size: 12.0
+  size: 8
   normal:
     family: Iosevka
 

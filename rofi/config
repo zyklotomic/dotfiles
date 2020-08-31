@@ -1,7 +1,7 @@
 rofi.m: -4
 rofi -threads 2..4
-rofi.font: IBM Plex Mono 12
-rofi.modi: combi,run
+rofi.font: Iosevka 12
+rofi.modi: combi,window
 ! rofi.matching: fuzzy
 rofi.combi-modi: window,drun
 rofi.kb-mode-next: Shift+Right
