@@ -22,33 +22,33 @@ URxvt.termName: screen-256color
 ! colors
 ! hard contrast: *background: #1d2021
 URxvt.depth: 32
-URxvt.background: [90]#0a111f
+URxvt.background: [85]#0a111f
 
 ! soft contrast: *background: #32302f
-*foreground: #ebdbb2
+*foreground: #eaeaea
 ! Black + DarkGrey
-*color0:  #282828
-*color8:  #928374
+*color0:  #09101c
+*color8:  #1b2940
 ! DarkRed + Red
-*color1:  #cc241d
-*color9:  #fb4934
+*color1:  #ff004b
+*color9:  #e65062
 ! DarkGreen + Green
-*color2:  #98971a
-*color10: #b8bb26
+*color2:  #21cd5f
+*color10: #58e189
 ! DarkYellow + Yellow
-*color3:  #d79921
-*color11: #fabd2f
+*color3:  #ffca00
+*color11: #fcdd68
 ! DarkBlue + Blue
-*color4:  #458588
-*color12: #83a598
+*color4:  #1164f1
+*color12: #3f7ee9
 ! DarkMagenta + Magenta
-*color5:  #b16286
-*color13: #d3869b
+*color5:  #b741df
+*color13: #d97ff4
 ! DarkCyan + Cyan
-*color6:  #689d6a
-*color14: #8ec07c
+*color6:  #1ebbee
+*color14: #73cae6
 ! LightGrey + White
-*color7:  #a89984
-*color15: #ebdbb2
+*color7:  #fefefe
+*color15: #dbdbdb
 
 URxvt.internalBorder: 10

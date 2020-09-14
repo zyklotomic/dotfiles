@@ -21,7 +21,7 @@ Config {
       , Run Battery [ "--template", "Batt: <left>%" ] 50
       , Run Swap [] 10
       -- always 0% anyways , Run Swap [] 10
-      , Run MultiCpu ["-t", "CPU: <total>%" ] 10     
+      , Run MultiCpu ["-t", "CPU: <total>%" ] 10
       , Run Date "<fc=#ffb044> %a %b %d %T %Z</fc>" "date" 10
-		]
+      ]
 }
