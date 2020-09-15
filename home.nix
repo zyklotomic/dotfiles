@@ -4,7 +4,7 @@
   home.packages = [
     pkgs.polybar
     pkgs.vscodium
-	  pkgs.qutebrowser
+    pkgs.qutebrowser
   ];
 
   services = {
