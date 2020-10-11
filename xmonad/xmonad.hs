@@ -80,7 +80,7 @@ myManageHook = composeAll []
 -- [ className =? "Firefox" --> doShift "二" ]
 
 ethansConfig = def {
-		terminal			= "urxvtc",
+		terminal			= "alacritty",
 		borderWidth			= 2,
  		workspaces			= ["壹","二","三","四","五","六","七","八","九"],
 		focusedBorderColor              = "#ffa300",

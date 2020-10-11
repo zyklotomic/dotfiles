@@ -12,23 +12,24 @@ URxvt*scrollTtyKeypress: true
 
 ! scroll on a pager in a secondary screen
 URxvt.secondaryScreen: 1
-URxvt.secondaryScroll: 0
+URxvt.secondaryScroll: 1
 
 ! URxvt.letterSpace: -1
-URxvt.font: xft:Iosevka:style=Regular:size=12,xft:Noto Sans Mono CJK TC:size=12,xft:Noto Emoji:style=Regular
+URxvt.font: xft:Iosevka:style=Regular:size=12,xft:Noto Sans Mono CJK TC:size=12
 URxvt.termName: screen-256color
 
 
 ! colors
 ! hard contrast: *background: #1d2021
 URxvt.depth: 32
-URxvt.background: [85]#0a111f
+URxvt.background: [90]#0a111f
+*.background: #0a111f
 
 ! soft contrast: *background: #32302f
 *foreground: #eaeaea
 ! Black + DarkGrey
 *color0:  #09101c
-*color8:  #1b2940
+*color8:  #4a638a
 ! DarkRed + Red
 *color1:  #ff004b
 *color9:  #e65062

@@ -1,5 +1,5 @@
 Config {
-		font = "xft:IBM Plex Mono Medium:size=11,Noto Sans Mono CJK SC-11:bold"
+		font = "xft:Iosevka Medium:size=11,Noto Sans Mono CJK SC-11:bold"
                 , additionalFonts = [ "xft:FontAwesome:style=Solid:pixelsize=12" ]
 		-- , alpha = 230
 		, border = NoBorder
