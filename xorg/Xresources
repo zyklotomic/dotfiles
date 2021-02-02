@@ -1,3 +1,6 @@
+! set dpi for alacritty
+! Xft.dpi: 192
+
 ! do not scroll with output
 URxvt*scrollTtyOutput: false
 

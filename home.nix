@@ -17,6 +17,11 @@
   # ];
   home.packages = [
     pkgs.zathura
+    pkgs.fzf
+    pkgs.vlc
+    pkgs.gimp
+    pkgs.wabt
+    pkgs.wasmtime
   ];
 
   programs.texlive.enable = true;
@@ -25,7 +30,8 @@
       scheme-medium
       titlesec
       enumitem
-      preprint;
+      preprint
+      fandol;
   };
 
 
@@ -47,6 +53,6 @@
     ".config/nvim/init.vim".source = ./vim/init.vim;
 
     # startx
-    ".xprofile".text = "feh --bg-fill /home/ethan/Pictures/current_wallpaper.png & picom -b & urxvt &";
+    ".xprofile".source = ./xorg/xprofile;
   };
 }

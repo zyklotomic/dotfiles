@@ -3,7 +3,7 @@ window:
     x: 10
     y: 10
 
-background_opacity: 0.90
+background_opacity: 0.85
 
 font:
   size: 12
@@ -50,3 +50,6 @@ colors:
     magenta: '#d3869b'
     cyan:    '#8ec07c'
     white:   '#ebdbb2'
+
+env:
+  WINIT_X11_SCALE_FACTOR: "1.0"

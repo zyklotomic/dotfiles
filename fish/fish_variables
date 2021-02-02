@@ -6,18 +6,19 @@ SETUVAR __fish_init_3_x:\x1d
 SETUVAR __fish_initialized:3100
 SETUVAR _fish_abbr_bc:bash\x20\x2dc
 SETUVAR _fish_abbr_cat:bat
-SETUVAR _fish_abbr_code:codium
 SETUVAR _fish_abbr_r:ranger\x2dcd
 SETUVAR _fish_abbr_se:sudoedit
 SETUVAR _fish_abbr_vim:nvim
-SETUVAR fish_color_autosuggestion:969896
+
+### Gruvbox Colors ###
+SETUVAR fish_color_autosuggestion:d3869b
 SETUVAR fish_color_cancel:\x2dr
-SETUVAR fish_color_command:b294bb
-SETUVAR fish_color_comment:f0c674
+# SETUVAR fish_color_command:c397d8
+SETUVAR fish_color_comment:ffffff
 SETUVAR fish_color_cwd:green
 SETUVAR fish_color_cwd_root:red
-SETUVAR fish_color_end:b294bb
-SETUVAR fish_color_error:cc6666
+SETUVAR fish_color_end:c397d8
+SETUVAR fish_color_error:d54e53
 SETUVAR fish_color_escape:00a6b2
 SETUVAR fish_color_history_current:\x2d\x2dbold
 SETUVAR fish_color_host:normal
@@ -25,9 +26,9 @@ SETUVAR fish_color_host_remote:yellow
 SETUVAR fish_color_match:\x2d\x2dbackground\x3dbrblue
 SETUVAR fish_color_normal:normal
 SETUVAR fish_color_operator:00a6b2
-SETUVAR fish_color_param:81a2be
-SETUVAR fish_color_quote:b5bd68
-SETUVAR fish_color_redirection:8abeb7
+# SETUVAR fish_color_param:7aa6da
+SETUVAR fish_color_quote:b8bb26
+SETUVAR fish_color_redirection:8ec07c
 SETUVAR fish_color_search_match:bryellow\x1e\x2d\x2dbackground\x3dbrblack
 SETUVAR fish_color_selection:white\x1e\x2d\x2dbold\x1e\x2d\x2dbackground\x3dbrblack
 SETUVAR fish_color_status:red
